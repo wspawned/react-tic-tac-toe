@@ -10,40 +10,59 @@ function Square(props) {
   );
 }
 
-class Board extends React.Component {
 
+class Board extends React.Component {
   renderSquare(i) {
     return (
-      <Square 
+      <Square
         value={this.props.squares[i]}
-        onClick= { () => this.props.onClick(i) } 
+        onClick={() => this.props.onClick(i)}
       />
     );
   }
-  
+
   render() {
-    return (
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+    const row = [];
+    let key = 0;
+    for (let i = 0; i < 3; i++) {
+      const col = [];
+      for (let j = 0; j < 3; j++) {
+        col.push(this.renderSquare(i * 3 + j));
+      }
+      key++; // is not it better in first for loop?
+      row.push(
+        <div key={key} className="board-row">
+          {col}
         </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
+      );
+    }
+    return <div>{row}</div>;
   }
+
+  // render() {
+  //   return (
+  //     <div>
+  //       <div className="board-row">
+  //         {this.renderSquare(0)}
+  //         {this.renderSquare(1)}
+  //         {this.renderSquare(2)}
+  //       </div>
+  //       <div className="board-row">
+  //         {this.renderSquare(3)}
+  //         {this.renderSquare(4)}
+  //         {this.renderSquare(5)}
+  //       </div>
+  //       <div className="board-row">
+  //         {this.renderSquare(6)}
+  //         {this.renderSquare(7)}
+  //         {this.renderSquare(8)}
+  //       </div>
+  //     </div>
+  //   );
+  // }
 }
-  
+
+
 class Game extends React.Component {
   constructor(props) {
     super(props);
