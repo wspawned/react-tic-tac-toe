@@ -14,6 +14,6 @@ If you have extra time or want to practice your new React skills, here are some 
 *  ~~Rewrite Board to use two loops to make the squares instead of hardcoding them.~~
 * Add a toggle button that lets you sort the moves in either ascending or descending order.
 * When someone wins, highlight the three squares that caused the win.
-* When no one wins, display a message about the result being a draw.
+* ~~When no one wins, display a message about the result being a draw.~~
 
 https://reactjs.org/tutorial/tutorial.html
