@@ -38,28 +38,6 @@ class Board extends React.Component {
     }
     return <div>{row}</div>;
   }
-
-  // render() {
-  //   return (
-  //     <div>
-  //       <div className="board-row">
-  //         {this.renderSquare(0)}
-  //         {this.renderSquare(1)}
-  //         {this.renderSquare(2)}
-  //       </div>
-  //       <div className="board-row">
-  //         {this.renderSquare(3)}
-  //         {this.renderSquare(4)}
-  //         {this.renderSquare(5)}
-  //       </div>
-  //       <div className="board-row">
-  //         {this.renderSquare(6)}
-  //         {this.renderSquare(7)}
-  //         {this.renderSquare(8)}
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }
 
 
@@ -72,6 +50,7 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      descendingList: true,
     };
   }
 
@@ -105,6 +84,9 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step,move) => {
+
+      if (!this.state.descendingList)  move = (history.length-1) - move;   ////////
+
       const desc = move ?
         "Go to move #" + move :
         "Go to game start";
@@ -134,13 +116,19 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
+
+          <button className="toggle-list"
+          onClick={()=> 
+            this.setState({descendingList : !this.state.descendingList })}
+          > {this.state.descendingList ? "descending" : "ascending" } </button>
+       
           <ol>{moves}</ol>
         </div>
       </div>
     );
   }
 }
-  
+
 // ========================================
   
   
@@ -166,34 +154,3 @@ function calculateWinner(squares) {
   }
   return null;
 }
-
-
-
-
-
-// import React from "react";
-// import ReactDOM from "react-dom";
-  
-// class ShoppingList extends React.Component {
-
-//   constructor(props) {
-//     super(props)
-//     this.name = "irşad"
-//   }
-
-//   render() {
-//     return (
-//       <div className="shopping-list">
-//         <h1>Shopping List for {this.name}</h1>
-//         <ul>
-//           <li>Instagram</li>
-//           <li>WhatsApp</li>
-//           <li>Oculus</li>
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<ShoppingList />);
