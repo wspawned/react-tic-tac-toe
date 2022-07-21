@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 function Square(props) {
+  //style={{backgroundColor:"red"}}       and there was no div below
   return (
-    <button className="square" onClick={props.onClick}>
+    <div  className="square"  >
+    <button className="square" onClick={props.onClick} >
       {props.value}
     </button>
+    </div>
   );
 }
 
@@ -14,7 +17,7 @@ function Square(props) {
 class Board extends React.Component {
   renderSquare(i) {
     return (
-      <Square
+      <Square 
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
       />
@@ -47,6 +50,7 @@ class Game extends React.Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
+        points: Array(9).fill(null),   //////////
       }],
       stepNumber: 0,
       xIsNext: true,
@@ -65,6 +69,7 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
+        points: pointsRef[i],     //////
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
@@ -85,10 +90,9 @@ class Game extends React.Component {
 
     const moves = history.map((step,move) => {
 
-      if (!this.state.descendingList)  move = (history.length-1) - move;   ////////
-
+      if (!this.state.descendingList)  move = (history.length-1) - move; 
       const desc = move ?
-        "Go to move #" + move :
+        "Go to move #" + move + " at point " + history[move].points :         ///////// 
         "Go to game start";
       return (
           <li key={move}>
@@ -135,6 +139,8 @@ class Game extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
 
+  ;       ///////
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -149,8 +155,21 @@ function calculateWinner(squares) {
   for(let i= 0; i<lines.length; i++) {
     const [a, b, c] = lines[i]
     if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+          ///////
       return squares[a];
     }
   }
   return null;
 }
+
+const pointsRef = [
+  [1,1],
+  [1,2],
+  [1,3],
+  [2,1],
+  [2,2],
+  [2,3],
+  [3,1],
+  [3,2],
+  [3,3]
+]
