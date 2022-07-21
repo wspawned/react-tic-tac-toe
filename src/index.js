@@ -110,7 +110,7 @@ class Game extends React.Component {
         "Go to game start";
       return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            <button onClick={() => this.jumpTo(move)}>{this.state.stepNumber===move? <b>{desc}</b> : desc}</button>    
           </li>
         );
     });
@@ -118,7 +118,7 @@ class Game extends React.Component {
     let status;
     if(winner) {
       status = "Winner: " + winner;
-    } else if(winner===null && this.state.stepNumber=== 9) {        ///////////
+    } else if(winner === null && this.state.stepNumber === 9) {
       status = "It is a draw: No winner"
     } else { 
       status = 'Next player: ' + (this.state.xIsNext ? "X" : "O" ) ;
