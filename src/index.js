@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 function Square(props) {
-  //style={{backgroundColor:"red"}}       and there was no div below
+  //style={{backgroundColor:"red"}}       maybe div outside button 
   return (
-    <div  className="square"  >
+
     <button className="square" onClick={props.onClick} >
       {props.value}
     </button>
-    </div>
+
   );
 }
 
@@ -32,7 +32,7 @@ class Board extends React.Component {
       for (let j = 0; j < 3; j++) {
         col.push(this.renderSquare(i * 3 + j));
       }
-      key++; // is not it better in first for loop?
+      key++;
       row.push(
         <div key={key} className="board-row">
           {col}
@@ -50,7 +50,7 @@ class Game extends React.Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
-        points: Array(9).fill(null),   //////////
+        points: Array(9).fill(null),
       }],
       stepNumber: 0,
       xIsNext: true,
@@ -69,7 +69,7 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
-        points: pointsRef[i],     //////
+        points: pointsRef[i],
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
@@ -92,7 +92,7 @@ class Game extends React.Component {
 
       if (!this.state.descendingList)  move = (history.length-1) - move; 
       const desc = move ?
-        "Go to move #" + move + " at point " + history[move].points :         ///////// 
+        "Go to move #" + move + " at point " + history[move].points :
         "Go to game start";
       return (
           <li key={move}>
@@ -139,9 +139,8 @@ class Game extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
 
-  ;       ///////
 
-function calculateWinner(squares) {
+function calculateWinner(squares) {           /// why cant be inside Game? make it winnerLine and wont stop game at win
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
