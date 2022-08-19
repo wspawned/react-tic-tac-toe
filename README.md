@@ -1,5 +1,8 @@
 # Tutorial: Intro to React
 
+Deployed link of project; <br>
+https://main.danlpd72bsz7r.amplifyapp.com/<br>
+<br>
 Tic-tac-toe game that:
 
 * Lets you play tic-tac-toe,
