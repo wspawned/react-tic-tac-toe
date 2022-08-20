@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 function Square(props) {
-  //style={{backgroundColor:"red"}}       maybe div outside button 
   return (
 
     <button className= {props.winSquare ? "win-square" : "square" } onClick={props.onClick} >
@@ -117,7 +116,7 @@ class Game extends React.Component {
           <Board
             squares = {current.squares}
             onClick = { (i) => this.handleClick(i) }
-            winningLine = { calculateWinner(current.squares) ? calculateWinner(current.squares).winningLine : []}  ///////
+            winningLine = { calculateWinner(current.squares) ? calculateWinner(current.squares).winningLine : []}
           />
         </div>
         <div className="game-info">
@@ -134,15 +133,13 @@ class Game extends React.Component {
     );
   }
 }
-
-// ========================================
   
   
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
 
 
-function calculateWinner(squares) {           /// why cant be inside Game? make it winnerLine and wont stop game at win
+function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -156,7 +153,6 @@ function calculateWinner(squares) {           /// why cant be inside Game? make 
   for(let i= 0; i<lines.length; i++) {
     const [a, b, c] = lines[i]
     if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-          ///////
       return {winner: squares[a], winningLine: [a,b,c]} ;
     }
   }
