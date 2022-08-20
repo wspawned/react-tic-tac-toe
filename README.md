@@ -1,8 +1,11 @@
 # Tutorial: Intro to React
 
-Deployed link of project; <br>
-https://main.danlpd72bsz7r.amplifyapp.com/<br>
+[Deployed project link](https://main.danlpd72bsz7r.amplifyapp.com/)
+
+![image](https://user-images.githubusercontent.com/80424496/185695695-f6186b35-e9dd-460c-9778-cf5708cae01f.png)
+
 <br>
+
 Tic-tac-toe game that:
 
 * Lets you play tic-tac-toe,
