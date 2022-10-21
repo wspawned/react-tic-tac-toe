@@ -1,6 +1,10 @@
-# Tutorial: Intro to React
+# XOX Game React App
 
 [Deployed project link](https://main.danlpd72bsz7r.amplifyapp.com/)
+
+- Designed XOX game clone with React 
+- App supports game logic for two players, keeps player moves provides action reverting feature 
+
 
 ![image](https://user-images.githubusercontent.com/80424496/185695695-f6186b35-e9dd-460c-9778-cf5708cae01f.png)
 
